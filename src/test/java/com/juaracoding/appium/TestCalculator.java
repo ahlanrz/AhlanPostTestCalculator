@@ -4,6 +4,7 @@ import com.juaracoding.appium.pages.Calculator;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -11,8 +12,6 @@ import org.testng.annotations.Test;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-
-import static org.testng.AssertJUnit.assertEquals;
 
 public class TestCalculator {
     private static AndroidDriver<MobileElement> driver;
@@ -39,8 +38,15 @@ public class TestCalculator {
     @Test
     public void testAdd() {
         calculator.calcAdd();
-        System.out.println("Hasil = "+calculator.getTxtResult());
-        assertEquals(calculator.getTxtResult(), "3");
+        System.out.println("Hasil = " + calculator.getTxtResult());
+        Assert.assertEquals(calculator.getTxtResult(), "3");
+    }
+
+    @Test
+    public void testMul() {
+        calculator.calMul();
+        System.out.println("Hasil = " + calculator.getTxtResult());
+        Assert.assertEquals(calculator.getTxtResult(), "12");
     }
 
     @AfterClass
